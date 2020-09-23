@@ -5,8 +5,37 @@
     <title>từ điển</title>
 </head>
 <body>
-<form action="https://www.google.com.vn/search">
-    <input type="text" name="name1">
-    <button >tìm kiếm</button>
-</form>
+
+<input type="text" name="keyword" placeholder="nhập từ cần tìm"/>
+<button onclick="getResult()">hiển thị</button>
+<p id="result"></p>
+<script>
+    let English = ["computer", "mouse", "belongings", "keybroad", "country"];
+    let Vietnames = ["máy tính", "con chuột ", "đồ dùng", "bàn phím ", "nước"];
+    let keyword = "";
+    function indexOf(keyword, arr) {
+        let index =-1;
+        for (let e in arr){
+            if(arr[e]==keyword) index = e;
+        }
+        return parseInt(index);
+    }
+    function translate(keyword) {
+        let result = "";
+        let index = indexOf(keyword,english)
+        if (index != -1){
+           result  = Vietnames[index];
+        }
+        else {
+            result = "không tìm thấy";
+        }
+        return result;
+    }
+    function getResult() {
+        let keyword = document.getElementById("keyword").value;
+        let result = translate(keyword);
+        document.getElementById("result").innerText = result;
+
+    }
+</script>
 </body>
